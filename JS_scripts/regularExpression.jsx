@@ -15,8 +15,9 @@ const regEx2 = ()=>{
     const regex1 = /hel.o/;  //means whole string(hel o) should be there and only the dot(.) part will be replaced with .
     const regex2 = /i...m/;  // whole string is: 'ipsum' regEx: from start:/Lorem...till 'i' now triple dots means 'psu' then 'm', so matched 'ipsum'
     const regex3 = /s../;
+    const regEXFromstr2 = /l.*/;
 
-    const res2 = regex3.test(str2);
+    const res2 = regEXFromstr2.test(str2);
     return res2
     
 }
