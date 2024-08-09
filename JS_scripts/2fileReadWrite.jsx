@@ -9,7 +9,7 @@ const path = require('path');
 
 //main source & target files
 const readFrom = '../../Projects/FullStack_Projects/Food_delivery_assets/frontend_assets/';
-const writeTo = '../../Projects/FullStack_Projects/Food_delivery_webApp/public/menuImages';
+const writeTo = '../../Projects/FullStack_Projects/Food_delivery_webApp/public/menuImage1';
 
 //if Target dir not exisiting:
 if(!fs.existsSync(writeTo)){
