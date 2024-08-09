@@ -11,7 +11,7 @@ const path = require('path');
 const readFrom = '../../Projects/FullStack_Projects/Food_delivery_assets/frontend_assets/';
 const writeTo = '../../Projects/FullStack_Projects/Food_delivery_webApp/public/menuImage1';
 
-//if Target dir not exisiting:
+//create if Target dir not exisiting:
 if(!fs.existsSync(writeTo)){
     fs.mkdirSync(writeTo, {recursive: true})
 }
@@ -22,28 +22,32 @@ const writeToPath = path.join(__dirname, writeTo);
 
 //read dir
 fs.readdir(readFromPath, (err,files)=>{
-    if(err)throw err;
-    // console.log("All-Files", files)
+    try{
 
-    //filter-out the menu_1...8.png files
-    const regEx = /^menu\_[1-8]\.png$/;
-    files.filter(file=>regEx.test(file)).forEach(file=>{
-        // console.log(file)
-
-        //add filtered files to main path
-        const sourceFiles = path.join(readFromPath, file);
-        const targetFiles = path.join(writeToPath, file);
-        // console.log(targetFiles);
-
-        //now read the files: files need to be in target dir not dir
-        fs.readFile(sourceFiles, (err, menuFiles)=>{
-            if(err)throw err;
-            
-            //write files to target dir
-            fs.writeFile(targetFiles, menuFiles, (err)=>{
+        if(err)throw err;
+        // console.log("All-Files", files)
+    
+        //filter-out the menu_1...8.png files
+        const regEx = /^menu\_[1-8]\.png$/;
+        files.filter(file=>regEx.test(file)).forEach(file=>{
+            // console.log(file)
+    
+            //add filtered files to main path
+            const sourceFiles = path.join(readFromPath, file);
+            const targetFiles = path.join(writeToPath, file);
+            // console.log(targetFiles);
+    
+            //now read the files: files need to be in target dir not dir
+            fs.readFile(sourceFiles, (err, menuFiles)=>{
                 if(err)throw err;
-                console.log("Files write completed: ", menuFiles);
+                
+                //write files to target dir
+                fs.writeFile(targetFiles, menuFiles, (err)=>{
+                    if(err)throw err;
+                    console.log("Files write completed: ", menuFiles);
+                })
             })
         })
-    })
+    }
+    catch(err){console.error(err.message)}
 })
