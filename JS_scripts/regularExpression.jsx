@@ -1,4 +1,4 @@
-//.1. Match a simple string
+//1. Match a simple string
 const regEx1 = ()=>{
     const str = "this is Jaipur";
     const regex1 = /\w/;  //True || \w, u, o, r, i, pur, etc... can be tested whether these chars exist in "str" or not
